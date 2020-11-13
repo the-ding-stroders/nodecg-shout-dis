@@ -1,0 +1,9 @@
+{
+  "generator-nodecg": {
+    "promptValues": {
+      "authorName": "David Thomas",
+      "authorEmail": "dev@synth3.tk",
+      "authorUrl": "https://synth3.tk"
+    }
+  }
+}

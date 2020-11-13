@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "airbnb-base"
+  ],
+  "globals": {
+    "nodecg": "readonly",
+    "NodeCG": "readonly"
+  },
+  "rules": {
+    "global-require": "off"
+  }
+}

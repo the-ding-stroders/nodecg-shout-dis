@@ -1,0 +1,38 @@
+{
+  "name": "nodecg-shout-dis",
+  "version": "0.1.0",
+  "description": "Send and receive messages on Discord from NodeCG",
+  "homepage": "https://thedingstroders.com",
+  "author": {
+    "name": "David Thomas",
+    "email": "dev@synth3.tk",
+    "url": "https://synth3.tk"
+  },
+  "scripts": {
+    "pretest": "eslint --ignore-path .gitignore ."
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg",
+    "nodecg-bundle",
+    "discord"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.6.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "yarn": ">= 1.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^12.4.1",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}

@@ -1,0 +1,14 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"type": "object",
+	"properties": {
+		"discordBotToken": {
+			"type": "string",
+			"description": "The token of the Discord bot to be used."
+    },
+    "discordChannel": {
+      "type": "string",
+      "description": "Which channel ID to send and receive messages."
+    }
+	}
+}
