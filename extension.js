@@ -16,17 +16,51 @@ module.exports = function (nodecg) {
     const discordChannel = client.channels.cache.get(DISCORD_CHANNEL);
 
     nodecg.listenFor('postDiscordMessage', (message, ack) => {
-      const messageEmbed = new Discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Some title')
-        .setURL('https://discord.js.org/')
-        .setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
-        .setDescription(message)
-        .setThumbnail('https://i.imgur.com/wSTFkRM.png')
-        .setTimestamp();
+      if (!message.title || !message.content) {
+        ack('Missing title and/or content fields!');
+      }
 
-      discordChannel.send(messageEmbed)
-        .then(() => ack(null, true));
+      const messageEmbed = new Discord.MessageEmbed()
+        .setTitle(message.title)
+        .setDescription(message.content);
+
+      if (message.author) {
+        messageEmbed.setAuthor(message.author.name, message.author.image, message.author.url);
+      }
+
+      if (message.url) {
+        messageEmbed.setURL(message.url);
+      }
+
+      if (message.color) {
+        messageEmbed.setColor(message.color);
+      } else {
+        messageEmbed.setColor('#0099ff');
+      }
+
+      if (message.fields) {
+        Object.values(message.fields).forEach((field) => {
+          if (typeof (field.inline) === 'undefined' || field.inline === null) {
+            // eslint-disable-next-line no-param-reassign
+            field.inline = false;
+          }
+          messageEmbed.addField(field.name, field.value, field.inline);
+        });
+      }
+
+      if (message.thumbnail) {
+        messageEmbed.setThumbnail(message.thumbnail);
+      }
+
+      if (message.image) {
+        messageEmbed.setImage(message.image);
+      }
+
+      if (message.timestamp) {
+        messageEmbed.setTimestamp(message.timestamp);
+      }
+
+      discordChannel.send(messageEmbed);
     });
   });
 
